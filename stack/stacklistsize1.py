@@ -1,24 +1,34 @@
-class Stack:
-    def __init__(self):
+class stack:
+    def __init__(self,size):
+        self.size=size
         self.list=[]
 
     def __str__(self):
-        if self.list == []:
-            return 'emtpy stack'
+        if self.isEmpty():
+            return 'stack is empty'
         else:
             values=self.list.reverse()
             values=[str(x) for x in self.list]
             return '\n'.join(values)
-    
-    def push(self,value):
-        self.list.append(value)
-        return 'value inserted'
-    
+
     def isEmpty(self):
         if self.list == []:
             return True
         else:
+            return False 
+        
+    def isFull(self):
+        if self.size == len(self.list):
+            return True
+        else:
             return False
+
+    def push(self,value):
+        if self.isFull():
+            return 'stack is full'
+        else:
+            self.list.append(value)
+            return 'value inserted'
         
     def pop(self):
         if self.list == []:
@@ -28,29 +38,29 @@ class Stack:
         
     def peek(self):
         if self.list == []:
-            return 'stack empty'
+            return 'empty stack'
         else:
-            return self.list[-1]
+            return self.list[0]
         
     def delete(self):
         if self.list == []:
-            return 'stack is empty'
+            return 'empty stack'
         else:
             self.list.clear()
             return 'stack deleted'
-
-        
-s=Stack()
+            
+n=int(input('enter the size of the stack'))
+s=stack(n)
 s.push(10)
-s.push(90)
-s.push(56)
-s.push(99)
-s.push(76)
-print('deletiion')
-print(s.pop())
-print(s.pop())
-print('last element')
+s.push(33)
+s.push(34)
+s.push(78)
+s.push(88)
+s.push(111)
+print(s)
+print('topmost')
 print(s.peek())
-print('after deletion')
 print(s.delete())
 print(s)
+
+

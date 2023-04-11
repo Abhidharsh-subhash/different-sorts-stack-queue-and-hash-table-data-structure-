@@ -4,6 +4,8 @@ def selection(array):
         for j in range(i+1,len(array)):
             if array[min] > array[j]:
                 min=j
+                print(array)
+            print(array)
         array[i],array[min]=array[min],array[i]
     return array
 
