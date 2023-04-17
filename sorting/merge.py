@@ -1,16 +1,37 @@
-def merge(array,start,middle,end):
-    n1=middle-start+1
-    n2=end-middle
+def mergesort(array):
+    if len(array) <= 1:
+        return array
+    
+    mid=len(array) // 2
+    left=array[:mid]
+    right=array[mid:]
 
-    L=[0] * n1
-    R=[0] * n2
+    left=mergesort(left)
+    right=mergesort(right)
 
-    for i in range(n1):
-        L[i] = array[start+i]
+    return mergetwo(left,right)
 
-    for j in range(n2):
-        R[j] = array[middle+1+j]
+def mergetwo(arr1,arr2):
+    j=0
+    i=0
+    result=[]
+    l1=len(arr1)
+    l2=len(arr2)
+    while (i<l1 and j<l2):
+        if arr1[i]<arr2[j]:
+            result.append(arr1[i])
+            i+=1
+        else:
+            result.append(arr2[j])
+            j+=1
+    while i<l1:
+        result.append(arr1[i])
+        i+=1
+    while j<l2:
+        result.append(arr2[j])
+        j+=1
+    return result
 
-    i=0 #initial index of first sub list
-    j=0 #initial index of second sub list
-    k=start #initial index of merged sub list
+arra=[1,4,2,7,5,3,7,8]
+
+print(mergesort(arra))
