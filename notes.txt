@@ -1,0 +1,40 @@
+Hash table:
+Hash table collisions occur when two or more keys are mapped to the same hash value, resulting in multiple keys being stored in the same location in the hash table. There are several methods to solve hash table collisions:
+
+Separate Chaining: This method involves creating a linked list at each slot in the hash table. When a collision occurs, the new key-value pair is added to the linked list at the appropriate slot. The downside of this method is that it requires additional memory allocation for the linked lists, and it can result in degraded performance if the linked lists become too long.
+
+Open Addressing: This method involves finding an alternative slot in the hash table when a collision occurs. There are different types of open addressing, such as linear probing, quadratic probing, and double hashing, which all involve different ways to determine the alternative slot to use. This method avoids the need for additional memory allocation, but it can be more difficult to implement and can result in clustering of keys in certain areas of the hash table.
+
+Robin Hood Hashing: This method involves using open addressing and also "robbing" keys from slots that are further away from their ideal location. When a collision occurs, the new key-value pair is added to the slot, and if the distance between the new key and the ideal slot is less than the distance of the existing key, the new key replaces the existing key. This method can reduce the clustering of keys in certain areas of the hash table and can result in more evenly distributed keys.
+
+Cuckoo Hashing: This method involves using multiple hash functions and multiple hash tables. When a collision occurs, the key is moved to the alternative hash table based on the alternative hash function. This process continues until either a vacant slot is found or a cycle is detected, indicating a full hash table. This method can provide good performance and low memory usage but can be more difficult to implement and requires additional memory allocation for the multiple hash tables.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Linear probing:
+Linear probing is a method of open addressing used in hash tables to avoid collisions by finding an alternative slot in the table to store a key-value pair when a collision occurs.
+
+In linear probing, if a collision occurs at slot i in the hash table, the algorithm looks for the next available slot by checking the subsequent slots i+1, i+2, i+3, and so on, until an empty slot is found. Once an empty slot is found, the key-value pair is inserted into that slot. The distance between the original slot and the new slot is called the probe distance.
+
+When searching for a key in the hash table, the algorithm starts by computing the hash value of the key and checking if the corresponding slot is occupied. If the slot is occupied and the key stored in the slot does not match the search key, the algorithm continues searching by checking the next slots in the sequence until an empty slot or a matching key is found.
+
+Linear probing has the advantage of being simple to implement and memory efficient since no additional memory allocation is required beyond the initial hash table. However, it can suffer from clustering, where groups of keys are located close to each other in the table, leading to degraded performance when the table becomes too full. To mitigate clustering, other probing techniques such as quadratic probing and double hashing can be used instead.
+
+Quadratic probing:
+Quadratic probing is a method of open addressing used in hash tables to avoid collisions by finding an alternative slot in the table to store a key-value pair when a collision occurs.
+
+In quadratic probing, if a collision occurs at slot i in the hash table, the algorithm looks for the next available slot by checking a sequence of slots that are determined by a quadratic function. For example, the algorithm may check slots i+1, i+4, i+9, i+16, and so on, where the number added to i at each step is the square of the step number. Once an empty slot is found, the key-value pair is inserted into that slot. The distance between the original slot and the new slot is called the probe distance.
+
+When searching for a key in the hash table using quadratic probing, the algorithm starts by computing the hash value of the key and checking if the corresponding slot is occupied. If the slot is occupied and the key stored in the slot does not match the search key, the algorithm continues searching by checking the next slots in the sequence determined by the quadratic function until an empty slot or a matching key is found.
+
+Quadratic probing can have better performance than linear probing in terms of clustering, since it checks a more widely spaced sequence of slots. However, quadratic probing can still suffer from clustering when the hash table becomes too full. In addition, care must be taken when choosing the quadratic function to ensure that all slots in the table are checked and to avoid cycles where the algorithm repeatedly checks the same sequence of slots.
+
+Double hashing:
+Double hashing is a method of open addressing used in hash tables to avoid collisions by finding an alternative slot in the table to store a key-value pair when a collision occurs.
+
+In double hashing, when a collision occurs at slot i in the hash table, the algorithm uses a second hash function to determine the distance to the next slot to check. The second hash function is typically designed to produce a different value for each key, and it should not produce values that are multiples of the table size to avoid cycles. The distance is then added to the current slot index i to find the next slot to check. If the next slot is already occupied, the algorithm repeats the process by applying the second hash function to the next slot until an empty slot is found.
+
+When searching for a key in the hash table using double hashing, the algorithm starts by computing the hash value of the key and checking if the corresponding slot is occupied. If the slot is occupied and the key stored in the slot does not match the search key, the algorithm uses the second hash function to determine the distance to the next slot to check and repeats the process until an empty slot or a matching key is found.
+
+Double hashing can have better performance than linear and quadratic probing since it can avoid clustering, especially if the second hash function is carefully chosen to produce a good distribution of values. However, it can be more complex to implement and requires the additional overhead of computing a second hash function for each collision
