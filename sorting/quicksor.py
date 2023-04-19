@@ -15,7 +15,14 @@ def partition(arr):
     arr[pivort_index],arr[end]=arr[end],arr[pivort_index]
 
 def quicksort(array):
-    partition(array)
+    if len(array) <= 1:
+        return array
+
+    pivot_index = partition(array)
+    left_partition = quicksort(array[:pivot_index])
+    right_partition = quicksort(array[pivot_index + 1:])
+    
+    return left_partition + [array[pivot_index]] + right_partition
 
 arr1=[11,9,29,7,2,15,28]
 quicksort(arr1)
