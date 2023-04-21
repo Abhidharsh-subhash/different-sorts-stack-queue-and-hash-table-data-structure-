@@ -6,7 +6,7 @@ def partition(arr):
     end = len(arr) - 1
 
     while start <= end:
-        while start <= end and arr[start] <= pivot:
+        while arr[start] <= pivot:
             start += 1
         while arr[end] > pivot:
             end -= 1
