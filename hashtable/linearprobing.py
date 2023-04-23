@@ -93,6 +93,7 @@ if __name__ == "__main__":
 	h.display()
 	print(h.sizeofMap())
 	print(h.deleteNode(2))
+	h.display()
 	print(h.sizeofMap())
 	print(h.isEmpty())
 	print(h.get(2))
