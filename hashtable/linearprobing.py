@@ -90,6 +90,7 @@ if __name__ == "__main__":
 	h.insertNode(1, 1)
 	h.insertNode(2, 2)
 	h.insertNode(2, 3)
+	h.insertNode(42,42)
 	h.display()
 	print(h.sizeofMap())
 	print(h.deleteNode(2))
