@@ -68,7 +68,7 @@ class HashMap:
 			hashIndex %= self.capacity
 			counter += 1
 		# If not found return None
-		return 0
+		return None
 
 	# Return current size
 	def sizeofMap(self):
